@@ -1,16 +1,12 @@
-import {
-    type ChatInputCommandInteraction,
-    SlashCommandBuilder
-} from "discord.js";
+import {ChatInputCommandInteraction, SlashCommandBuilder} from "discord.js";
+import {ues} from "../../functions/wikiHelpers.js";
 import characterInfo from "../../functions/character.js";
-import { ues } from "../../functions/wikiHelpers.js";
-import zeeInfo from "../../functions/zee.js";
 import loreInfo from "../../functions/lore.js";
 
 export default {
     data: new SlashCommandBuilder()
-        .setName("ues")
-        .setDescription('UES Discord server commands')
+        .setName("wiki")
+        .setDescription('UES Wiki related commands')
         .addSubcommand((subcommand) =>
             subcommand
                 .setName('character')
@@ -51,11 +47,6 @@ export default {
         )
         .addSubcommand((subcommand) =>
             subcommand
-                .setName("zee")
-                .setDescription("Zee  info,,, I think")
-        )
-        .addSubcommand((subcommand) =>
-            subcommand
                 .setName('lore')
                 .setDescription("Bonus lore")
                 .addStringOption((option) =>
@@ -86,9 +77,6 @@ export default {
         switch (interaction.options.getSubcommand()) {
             case 'character':
                 await characterInfo(interaction);
-                break;
-            case 'zee':
-                await zeeInfo(interaction);
                 break;
             case 'lore':
                 await loreInfo(interaction);
