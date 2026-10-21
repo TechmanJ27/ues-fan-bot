@@ -1,5 +1,4 @@
 import {ChatInputCommandInteraction, SlashCommandBuilder} from "discord.js";
-import {ues} from "../../functions/wikiHelpers.js";
 import characterInfo from "../../functions/character.js";
 import loreInfo from "../../functions/lore.js";
 
@@ -71,8 +70,6 @@ export default {
 
     async execute(interaction: ChatInputCommandInteraction) {
         await interaction.deferReply()
-
-        if (interaction.guildId !== ues.guildId) return interaction.editReply('This command can only be run in the UES server.')
 
         switch (interaction.options.getSubcommand()) {
             case 'character':
